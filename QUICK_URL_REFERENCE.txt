@@ -1,0 +1,74 @@
+═══════════════════════════════════════════════════════════
+  QUICK URL REFERENCE - Gebruik deze URLs in Postman/Browser
+═══════════════════════════════════════════════════════════
+
+⚠️ BELANGRIJK: Alle URLs beginnen met /api/
+
+═══════════════════════════════════════════════════════════
+  AUTHENTICATION
+═══════════════════════════════════════════════════════════
+
+POST http://localhost:3000/api/auth/register
+POST http://localhost:3000/api/auth/login
+
+═══════════════════════════════════════════════════════════
+  USERS
+═══════════════════════════════════════════════════════════
+
+GET    http://localhost:3000/api/users
+GET    http://localhost:3000/api/users/1
+POST   http://localhost:3000/api/users
+PUT    http://localhost:3000/api/users/1
+DELETE http://localhost:3000/api/users/1
+
+═══════════════════════════════════════════════════════════
+  EVENTS
+═══════════════════════════════════════════════════════════
+
+GET    http://localhost:3000/api/events
+GET    http://localhost:3000/api/events?limit=5&offset=0
+GET    http://localhost:3000/api/events/search?query=concert
+GET    http://localhost:3000/api/events/1
+POST   http://localhost:3000/api/events          (JWT token nodig!)
+PUT    http://localhost:3000/api/events/1        (JWT token nodig!)
+DELETE http://localhost:3000/api/events/1        (JWT token nodig!)
+
+═══════════════════════════════════════════════════════════
+  QUICK TESTS (Test deze eerst!)
+═══════════════════════════════════════════════════════════
+
+1. API Root:
+   GET http://localhost:3000/api
+   → Verwacht: JSON met endpoints overzicht
+
+2. Users:
+   GET http://localhost:3000/api/users
+   → Verwacht: [] of array met users
+
+3. Events:
+   GET http://localhost:3000/api/events
+   → Verwacht: JSON met events array + pagination
+
+═══════════════════════════════════════════════════════════
+  VEELGEMAAKTE FOUTEN
+═══════════════════════════════════════════════════════════
+
+❌ FOUT:  http://localhost:3000/users
+✅ CORRECT: http://localhost:3000/api/users
+
+❌ FOUT:  http://localhost:3000/events
+✅ CORRECT: http://localhost:3000/api/events
+
+❌ FOUT:  http://localhost:3000/auth/register
+✅ CORRECT: http://localhost:3000/api/auth/register
+
+═══════════════════════════════════════════════════════════
+  BELANGRIJKSTE TIP
+═══════════════════════════════════════════════════════════
+
+Check altijd de prefix in src/app.js:
+- app.use('/api/users', usersRoutes) → URL = /api/users
+- app.use('/api/events', eventsRoutes) → URL = /api/events
+- app.use('/api/auth', authRoutes) → URL = /api/auth
+
+═══════════════════════════════════════════════════════════
